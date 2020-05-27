@@ -1,0 +1,12 @@
+Source: ros-noetic-locomove-base
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-locomotor, ros-noetic-move-base-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core, ros-noetic-nav-core-adapter, ros-noetic-roslint
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-locomove-base
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-locomotor, ros-noetic-move-base-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core, ros-noetic-nav-core-adapter
+Description: Extension of locomotor that implements move_base's functionality.
