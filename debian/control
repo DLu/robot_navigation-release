@@ -1,0 +1,12 @@
+Source: ros-noetic-dlux-plugins
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-dlux-global-planner, ros-noetic-global-planner-tests, ros-noetic-nav-core2, ros-noetic-nav-grid, ros-noetic-pluginlib, ros-noetic-roslint, ros-noetic-rostest
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-dlux-plugins
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-dlux-global-planner, ros-noetic-nav-core2, ros-noetic-nav-grid, ros-noetic-pluginlib
+Description: Implementation of dlux_global_planner plugin interfaces.
