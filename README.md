@@ -1,3 +1,45 @@
+## robot_navigation (noetic) - 0.2.6-1
+
+The packages in the `robot_navigation` repository were released into the `noetic` distro by running `/usr/bin/bloom-release robot_navigation -r noetic` on `Wed, 27 May 2020 21:36:00 -0000`
+
+These packages were released:
+- `costmap_queue`
+- `dlux_global_planner`
+- `dlux_plugins`
+- `dwb_critics`
+- `dwb_local_planner`
+- `dwb_msgs`
+- `dwb_plugins`
+- `global_planner_tests`
+- `locomotor`
+- `locomotor_msgs`
+- `locomove_base`
+- `nav_2d_msgs`
+- `nav_2d_utils`
+- `nav_core2`
+- `nav_core_adapter`
+- `nav_grid`
+- `nav_grid_iterators`
+- `nav_grid_pub_sub`
+- `robot_navigation`
+
+Version of package(s) in repository `robot_navigation`:
+
+- upstream repository: https://github.com/locusrobotics/robot_navigation.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `0.2.6-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.7`
+- catkin_pkg version: `0.4.20`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.2`
+- vcstools version: `0.1.42`
+
+
 ## robot_navigation (melodic) - 0.2.5-1
 
 The packages in the `robot_navigation` repository were released into the `melodic` distro by running `/usr/bin/bloom-release robot_navigation -r melodic -e --override-release-repository-url https://github.com/DLu/robot_navigation-release.git` on `Tue, 19 Feb 2019 17:05:06 -0000`
