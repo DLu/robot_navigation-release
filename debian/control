@@ -1,0 +1,12 @@
+Source: ros-noetic-robot-navigation
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-robot-navigation
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-costmap-queue, ros-noetic-dlux-global-planner, ros-noetic-dlux-plugins, ros-noetic-dwb-critics, ros-noetic-dwb-local-planner, ros-noetic-dwb-msgs, ros-noetic-dwb-plugins, ros-noetic-global-planner-tests, ros-noetic-locomotor, ros-noetic-locomotor-msgs, ros-noetic-locomove-base, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core-adapter, ros-noetic-nav-core2, ros-noetic-nav-grid, ros-noetic-nav-grid-iterators, ros-noetic-nav-grid-pub-sub
+Description: The robot_navigation package
