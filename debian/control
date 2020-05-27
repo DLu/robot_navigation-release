@@ -1,0 +1,13 @@
+Source: ros-noetic-nav-core-adapter
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-costmap-2d, ros-noetic-dwb-critics, ros-noetic-dwb-local-planner, ros-noetic-dwb-plugins, ros-noetic-geometry-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core, ros-noetic-nav-core2, ros-noetic-nav-grid, ros-noetic-nav-msgs, ros-noetic-pluginlib, ros-noetic-roslint, ros-noetic-rostest, ros-noetic-tf, ros-noetic-visualization-msgs
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-nav-core-adapter
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-costmap-2d, ros-noetic-geometry-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core, ros-noetic-nav-core2, ros-noetic-nav-grid, ros-noetic-nav-msgs, ros-noetic-pluginlib, ros-noetic-tf, ros-noetic-visualization-msgs
+Description: This package contains adapters for using `nav_core` plugins as `nav_core2` plugins and vice versa (more or less).
+ See README.md for more information.
