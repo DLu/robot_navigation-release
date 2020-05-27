@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(dlux_plugins)
 set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++11;-Wall;-Werror")
 
@@ -55,5 +55,5 @@ install(
 )
 install(
     DIRECTORY test
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/test
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )

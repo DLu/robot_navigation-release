@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(nav_core2)
 set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++11")
 
@@ -27,6 +27,7 @@ if(CATKIN_ENABLE_TESTING)
   roslint_add_test()
 
   catkin_add_gtest(bounds_test test/bounds_test.cpp)
+  catkin_add_gtest(exception_test test/exception_test.cpp)
 endif()
 
 install(DIRECTORY include/${PROJECT_NAME}/
