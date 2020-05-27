@@ -1,0 +1,12 @@
+Source: ros-noetic-nav-2d-utils
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-geometry-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-core2, ros-noetic-nav-grid, ros-noetic-nav-msgs, ros-noetic-pluginlib, ros-noetic-roscpp, ros-noetic-roslint, ros-noetic-rostest, ros-noetic-rosunit, ros-noetic-std-msgs, ros-noetic-tf, ros-noetic-tf2-geometry-msgs, ros-noetic-tf2-ros, ros-noetic-xmlrpcpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-nav-2d-utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-geometry-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-core2, ros-noetic-nav-grid, ros-noetic-nav-msgs, ros-noetic-pluginlib, ros-noetic-roscpp, ros-noetic-std-msgs, ros-noetic-tf, ros-noetic-tf2-geometry-msgs, ros-noetic-tf2-ros, ros-noetic-xmlrpcpp
+Description: A handful of useful utility functions for nav_core2 packages.
