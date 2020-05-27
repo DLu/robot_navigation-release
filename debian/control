@@ -1,0 +1,12 @@
+Source: ros-noetic-nav-grid-iterators
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-grid, ros-noetic-nav-msgs, ros-noetic-roscpp, ros-noetic-roslint, ros-noetic-rosunit
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-nav-grid-iterators
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-grid, ros-noetic-nav-msgs, ros-noetic-roscpp
+Description: Iterator implementations for moving around the cells of a nav_grid in a number of common patterns.
