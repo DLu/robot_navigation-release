@@ -110,9 +110,11 @@ tracks:
     - git-bloom-generate -y rosrpm --prefix release/:{ros_distro} :{ros_distro} -i
       :{release_inc}
     devel_branch: noetic
+    last_release: noetic0.2.6
+    last_version: 0.2.6
     name: upstream
     patches: null
-    release_inc: 0
+    release_inc: '1'
     release_repo_url: null
     release_tag: noetic:{version}
     ros_distro: noetic
