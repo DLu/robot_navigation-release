@@ -1,0 +1,12 @@
+Source: ros-noetic-dwb-local-planner
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-dwb-msgs, ros-noetic-geometry-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core2, ros-noetic-nav-msgs, ros-noetic-pluginlib, ros-noetic-roscpp, ros-noetic-roslint, ros-noetic-rostest, ros-noetic-rosunit, ros-noetic-sensor-msgs, ros-noetic-tf, ros-noetic-visualization-msgs
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-dwb-local-planner
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-dwb-msgs, ros-noetic-geometry-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core2, ros-noetic-nav-msgs, ros-noetic-pluginlib, ros-noetic-roscpp, ros-noetic-sensor-msgs, ros-noetic-tf, ros-noetic-visualization-msgs
+Description: Plugin based local planner implementing the nav_core2::LocalPlanner interface.
