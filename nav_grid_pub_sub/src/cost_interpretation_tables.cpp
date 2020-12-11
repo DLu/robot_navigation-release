@@ -77,7 +77,7 @@ std::vector<unsigned char> grayScaleInterpretation(const double free_threshold, 
     else
     {
       // scale from [free_threshold, occupied_threshold] to [1, 99]
-      cost_interpretation_table[i] = 99 * (intensity - free_threshold) / (occupied_threshold - free_threshold);
+      cost_interpretation_table[i] = 1 + 98 * (intensity - free_threshold) / (occupied_threshold - free_threshold);
     }
   }
   return cost_interpretation_table;
@@ -95,6 +95,8 @@ std::vector<unsigned char> getOccupancyInput(bool trinary, bool use_unknown_valu
       value = 0;
     else if (i >= 100)
       value = 254;
+    else if (i == 99)
+      value = 253;
     else if (trinary)
       value = 0;
     else
