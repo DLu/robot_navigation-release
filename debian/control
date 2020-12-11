@@ -1,0 +1,13 @@
+Source: ros-noetic-locomotor
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-actionlib, ros-noetic-catkin, ros-noetic-geometry-msgs, ros-noetic-locomotor-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core2, ros-noetic-nav-msgs, ros-noetic-pluginlib, ros-noetic-roscpp, ros-noetic-roslint, ros-noetic-rospy
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-locomotor
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-actionlib, ros-noetic-geometry-msgs, ros-noetic-locomotor-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core2, ros-noetic-nav-msgs, ros-noetic-pluginlib, ros-noetic-roscpp, ros-noetic-rospy
+Description: Locomotor is an extensible path planning coordination engine that replaces move_base.
+ The goal is to provide a mechanism for controlling what happens when the global and local planners succeed and fail. It leverages ROS callback queues to coordinate multiple threads.
