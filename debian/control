@@ -1,0 +1,12 @@
+Source: ros-noetic-costmap-queue
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-nav-core2, ros-noetic-roscpp, ros-noetic-roslint, ros-noetic-rosunit
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-costmap-queue
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-nav-core2, ros-noetic-roscpp
+Description: Tool for iterating through the cells of a costmap to find the closest distance to a subset of cells.
