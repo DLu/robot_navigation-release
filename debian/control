@@ -1,0 +1,12 @@
+Source: ros-melodic-color-util
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin, ros-melodic-roslint, ros-melodic-std-msgs
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-melodic-color-util
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-std-msgs
+Description: An almost dependency-less library for converting between color spaces
