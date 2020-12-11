@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 2.8.3)
 project(nav_grid_pub_sub)
 set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++11;-Wall;-Werror")
 
@@ -33,7 +33,7 @@ include_directories(
     include ${catkin_INCLUDE_DIRS}
 )
 
-add_library(nav_grid_pub_sub src/cost_interpretation_tables.cpp src/nav_grid_subscriber.cpp)
+add_library(nav_grid_pub_sub src/cost_interpretation_tables.cpp)
 target_link_libraries(nav_grid_pub_sub ${catkin_LIBRARIES})
 add_dependencies(nav_grid_pub_sub ${catkin_EXPORTED_TARGETS})
 
