@@ -1,0 +1,12 @@
+Source: ros-noetic-nav-grid-pub-sub
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-geometry-msgs, ros-noetic-map-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core2, ros-noetic-nav-grid, ros-noetic-nav-grid-iterators, ros-noetic-nav-msgs, ros-noetic-roscpp, ros-noetic-roslint
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-nav-grid-pub-sub
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-geometry-msgs, ros-noetic-map-msgs, ros-noetic-nav-2d-msgs, ros-noetic-nav-2d-utils, ros-noetic-nav-core2, ros-noetic-nav-grid, ros-noetic-nav-grid-iterators, ros-noetic-nav-msgs, ros-noetic-roscpp
+Description: Publishers and Subscribers for nav_grid data.
