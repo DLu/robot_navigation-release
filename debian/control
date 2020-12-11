@@ -1,0 +1,12 @@
+Source: ros-melodic-robot-nav-rviz-plugins
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), qtbase5-dev, ros-melodic-catkin, ros-melodic-color-util, ros-melodic-geometry-msgs, ros-melodic-nav-2d-msgs, ros-melodic-nav-2d-utils, ros-melodic-nav-core2, ros-melodic-nav-grid, ros-melodic-nav-grid-iterators, ros-melodic-nav-grid-pub-sub, ros-melodic-nav-msgs, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-roslint, ros-melodic-rviz, ros-melodic-std-msgs
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-melodic-robot-nav-rviz-plugins
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, qtbase5-dev, ros-melodic-color-util, ros-melodic-geometry-msgs, ros-melodic-nav-2d-msgs, ros-melodic-nav-2d-utils, ros-melodic-nav-core2, ros-melodic-nav-grid, ros-melodic-nav-grid-iterators, ros-melodic-nav-grid-pub-sub, ros-melodic-nav-msgs, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-rviz, ros-melodic-std-msgs
+Description: RViz visualizations for robot_navigation datatypes
