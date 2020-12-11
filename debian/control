@@ -1,0 +1,12 @@
+Source: ros-melodic-robot-nav-viz-demos
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-angles, ros-melodic-catkin, ros-melodic-color-util, ros-melodic-geometry-msgs, ros-melodic-nav-2d-msgs, ros-melodic-nav-2d-utils, ros-melodic-nav-grid, ros-melodic-nav-grid-iterators, ros-melodic-nav-grid-pub-sub, ros-melodic-pluginlib, ros-melodic-robot-nav-rviz-plugins, ros-melodic-rosbag, ros-melodic-roscpp, ros-melodic-roslaunch, ros-melodic-roslint, ros-melodic-rviz
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-melodic-robot-nav-viz-demos
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-angles, ros-melodic-color-util, ros-melodic-geometry-msgs, ros-melodic-nav-2d-msgs, ros-melodic-nav-2d-utils, ros-melodic-nav-grid, ros-melodic-nav-grid-iterators, ros-melodic-nav-grid-pub-sub, ros-melodic-pluginlib, ros-melodic-robot-nav-rviz-plugins, ros-melodic-rosbag, ros-melodic-roscpp, ros-melodic-rviz
+Description: Demos for testing/demonstrating the robot_nav_rviz_plugins and color_util packages
