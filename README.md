@@ -1,41 +1,43 @@
-## The robot_navigation Stack
-### 2.5D Navigation in ROS
+# rqt_dwb_plugin
 
-## Available Packages:
+This package allows you to view `dwb_msgs/LocalPlanEvaluation` information visually using `rqt`. Currently only `x/theta` velocities are supported. The information can be viewed inside of `rqt_bag` or as an independent application. For a high level view of how `rqt_bag` plugins work,
+check out [this tutorial](http://wiki.ros.org/rqt_bag/Tutorials/Create%20an%20rqt_bag%20plugin).
 
-### Core Interaces
- * `nav_grid` - A templatized interface for overlaying a two dimensional grid on the world.
- * `nav_core2` - Core Costmap and Planner Interfaces
- * `nav_2d_msgs` - Basic message types for two and a half dimensional navigation.
+## Eval View
+You can show detailed information about a single `LocalPlanEvaluation` in one of two ways:
+ * Within `rqt_bag` you can right click the `LocalPlanEvaluation` data much the same way you
+     would view the raw values of the message.
+ * You can also view live data with an independent application by running
+   `rosrun rqt_dwb_plugin live_panel _ns:=/move_base/DWBLocalPlanner`
 
-### Local Planning
- * `dwb_local_planner` - The core planner logic and plugin interfaces.
- * `dwb_msgs` - ROS Interfaces for interacting with the dwb local planner.
- * `dwb_plugins` - Plugin implementations for velocity iteration and trajectory generation
- * `dwb_critics` - Critic plugin implementations needed for replicating behavior of dwa
+![widget screenshot](doc/widget0.png)
 
-### Global Planning
- * `dlux_global_planner` - The core planner logic and plugin interfaces.
- * `dlux_plugins` - Plugin implementations for dlux global planner interfaces.
- * `global_planner_tests` - Collection of tests for checking the validity and completeness of global planners.
+This view has four different components.
 
-### Planner Coordination
- * `locomotor` - Extensible path planning coordination engine that controls what happens when the global and local planners succeed and fail
- * `locomotor_msgs` - An action definition for Locomotor and other related messages
- * `locomove_base` - Extension of Locomotor that replicates `move_base`'s functionality.
+ * **Trajectory Cloud** -
+The top panel shows the Trajectory "Cloud", with each of the poses for each of the trajectories drawn relative to the robot's starting coordinates.
 
-### Utilities
- * `nav_2d_utils` - Message conversions, etc.
- * `nav_grid_iterators` - Iterator implementations for moving around the cells of a `nav_grid` in a number of common patterns.
- * `nav_grid_pub_sub` - Publishers and Subscribers for `nav_grid` data.
- * `costmap_queue` - Tool for iterating through the cells of a costmap to find the closest distance to a subset of cells.
+ * **Velocity Space** -
+The left panel shows each of the individual trajectories being evaluated in velocity space. The x axis represents the x component and the y axis represents the theta component. The highest and lowest values are displayed in the axis labels.
 
-### Backwards Compatibility
- * `nav_core_adapter` - Adapters between `nav_core` and `nav_core2`.
+ * **Sorted Scores** -
+The right panel shows a table of the total score for each trajectory, as well as the x/theta velocity for that trajectory. They are sorted with increasing scores, thus the best option will always be first.
 
-## ROS Buildfarm
+ * **Detailed Scores** -
+The bottom panel shows the detailed critic scores for the selected trajectories.
 
-|         | source | binary |
-|---------|--------|--------|
-| melodic | [![Build Status](http://build.ros.org/view/Msrc_uB/job/Msrc_uB__robot_navigation__ubuntu_bionic__source/badge/icon?style=flat-square)](http://build.ros.org/view/Msrc_uB/job/Msrc_uB__robot_navigation__ubuntu_bionic__source/) | [![Build Status](http://build.ros.org/view/Mbin_uB64/job/Mbin_uB64__robot_navigation__ubuntu_bionic_amd64__binary/badge/icon?style=flat-square)](http://build.ros.org/view/Mbin_uB64/job/Mbin_uB64__robot_navigation__ubuntu_bionic_amd64__binary/)|
-| noetic  | [![Build Status](http://build.ros.org/view/Nsrc_uF/job/Nsrc_uF__robot_navigation__ubuntu_focal__source/badge/icon?style=flat-square)](http://build.ros.org/view/Nsrc_uF/job/Nsrc_uF__robot_navigation__ubuntu_focal__source/) | [![Build Status](http://build.ros.org/view/Nbin_uF64/job/Nbin_uF64__robot_navigation__ubuntu_focal_amd64__binary/badge/icon?style=flat-square)](http://build.ros.org/view/Nbin_uF64/job/Nbin_uF64__robot_navigation__ubuntu_focal_amd64__binary/)|
+### Selecting Additional Trajectories
+The left and right panels give you the ability to select additional trajectories to be highlighted. Clicking in either the velocity space or sorted scores will add a trajectory from each panel in a new color. You can click again to remove it.
+
+![widget screenshot](doc/widget1.png)
+
+### Additional Topics
+Note that if `/transformed_global_plan` and `/velocity` also exist in the bag file with the same namespace, the plan will be drawn into the trajectory cloud, and the current velocity will be drawn into the velocity space.
+
+## Timeline Plot
+This feature only works within `rqt_bag`. If you turn on "Thumbnails" ![thumbnail logo](doc/thumbnail.png) for `LocalPlanEvaluation` data, it will show a plot of the best velocity values.
+
+![screenshot of timeline](doc/timeline.png)
+
+* The black line is the x component and blue is the theta component.
+* If local planning failed, the values will be 0 and displayed in red, as seen at the end of the above bag.
