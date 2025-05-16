@@ -1,0 +1,12 @@
+Source: ros-noetic-rqt-dwb-plugin
+Section: misc
+Priority: optional
+Maintainer: David V. Lu!! <davidvlu@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), python3-setuptools, ros-noetic-catkin, ros-noetic-roslint <!nocheck>
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-rqt-dwb-plugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-dwb-msgs, ros-noetic-geometry-msgs, ros-noetic-nav-2d-utils, ros-noetic-python-qt-binding, ros-noetic-rospy, ros-noetic-rqt-bag
+Description: View dwb_msgs/LocalPlanEvaluation information visually using rqt
