@@ -1,3 +1,51 @@
+## robot_navigation (noetic) - 0.3.1-1
+
+The packages in the `robot_navigation` repository were released into the `noetic` distro by running `/usr/bin/bloom-release -r noetic robot_navigation` on `Fri, 16 May 2025 03:16:27 -0000`
+
+These packages were released:
+- `color_util`
+- `costmap_queue`
+- `dlux_global_planner`
+- `dlux_plugins`
+- `dwb_critics`
+- `dwb_local_planner`
+- `dwb_msgs`
+- `dwb_plugins`
+- `global_planner_tests`
+- `locomotor`
+- `locomotor_msgs`
+- `locomove_base`
+- `nav_2d_msgs`
+- `nav_2d_utils`
+- `nav_core2`
+- `nav_core_adapter`
+- `nav_grid`
+- `nav_grid_iterators`
+- `nav_grid_pub_sub`
+- `nav_grid_server`
+- `robot_nav_rviz_plugins`
+- `robot_nav_tools`
+- `robot_nav_viz_demos`
+- `robot_navigation`
+- `rqt_dwb_plugin`
+
+Version of package(s) in repository `robot_navigation`:
+
+- upstream repository: https://github.com/locusrobotics/robot_navigation.git
+- release repository: https://github.com/DLu/robot_navigation-release.git
+- rosdistro version: `0.3.0-2`
+- old version: `0.3.0-2`
+- new version: `0.3.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `1.0.0`
+- rosdep version: `0.25.1`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## robot_navigation (noetic) - 0.3.0-2
 
 The packages in the `robot_navigation` repository were released into the `noetic` distro by running `/usr/bin/bloom-release robot_navigation -r noetic --edit` on `Fri, 11 Dec 2020 20:57:11 -0000`
