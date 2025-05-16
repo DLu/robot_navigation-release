@@ -1,41 +1,79 @@
-## The robot_navigation Stack
-### 2.5D Navigation in ROS
+# nav_grid_server
 
-## Available Packages:
+`nav_grid_server` is a drop-in replacement for [`map_server`](http://wiki.ros.org/map_server) but with added flexibility. As such, it is a convenient tool for publishing maps (`nav_grid`s) from image files. It can also save image files from ROS topics.
 
-### Core Interaces
- * `nav_grid` - A templatized interface for overlaying a two dimensional grid on the world.
- * `nav_core2` - Core Costmap and Planner Interfaces
- * `nav_2d_msgs` - Basic message types for two and a half dimensional navigation.
+## Map Server
+#### Classic Usage
+    rosrun nav_grid_server server path/to/map.yaml
 
-### Local Planning
- * `dwb_local_planner` - The core planner logic and plugin interfaces.
- * `dwb_msgs` - ROS Interfaces for interacting with the dwb local planner.
- * `dwb_plugins` - Plugin implementations for velocity iteration and trajectory generation
- * `dwb_critics` - Critic plugin implementations needed for replicating behavior of dwa
+This reads map meta-data from the yaml file and exposes the map in three different ways.
+* Publishes a `nav_msgs/OccupancyGrid` message on the `/map` topic (along with `nav_msgs/MapMetaData` on the `/map_metadata` topic).
+* Provides the `nav_msgs/GetMap` service with the name `/static_map`
+* Publishes a `nav_2d_msgs/NavGridOfChars` message on the `/static_map` topic (which natively contains the metadata)
 
-### Global Planning
- * `dlux_global_planner` - The core planner logic and plugin interfaces.
- * `dlux_plugins` - Plugin implementations for dlux global planner interfaces.
- * `global_planner_tests` - Collection of tests for checking the validity and completeness of global planners.
+#### Direct Image Usage
+    rosrun nav_grid_server server path/to/map.png
 
-### Planner Coordination
- * `locomotor` - Extensible path planning coordination engine that controls what happens when the global and local planners succeed and fail
- * `locomotor_msgs` - An action definition for Locomotor and other related messages
- * `locomove_base` - Extension of Locomotor that replicates `move_base`'s functionality.
+You can also just provide the image file as a command line argument and use the default metadata.
 
-### Utilities
- * `nav_2d_utils` - Message conversions, etc.
- * `nav_grid_iterators` - Iterator implementations for moving around the cells of a `nav_grid` in a number of common patterns.
- * `nav_grid_pub_sub` - Publishers and Subscribers for `nav_grid` data.
- * `costmap_queue` - Tool for iterating through the cells of a costmap to find the closest distance to a subset of cells.
 
-### Backwards Compatibility
- * `nav_core_adapter` - Adapters between `nav_core` and `nav_core2`.
+## Map Saver
+    rosrun nav_grid_server saver
 
-## ROS Buildfarm
+This retrieves a `nav_msgs/OccupancyGrid` message from the `/map` topic and saves as `map.png` and `map.yaml`.
 
-|         | source | binary |
-|---------|--------|--------|
-| melodic | [![Build Status](http://build.ros.org/view/Msrc_uB/job/Msrc_uB__robot_navigation__ubuntu_bionic__source/badge/icon?style=flat-square)](http://build.ros.org/view/Msrc_uB/job/Msrc_uB__robot_navigation__ubuntu_bionic__source/) | [![Build Status](http://build.ros.org/view/Mbin_uB64/job/Mbin_uB64__robot_navigation__ubuntu_bionic_amd64__binary/badge/icon?style=flat-square)](http://build.ros.org/view/Mbin_uB64/job/Mbin_uB64__robot_navigation__ubuntu_bionic_amd64__binary/)|
-| noetic  | [![Build Status](http://build.ros.org/view/Nsrc_uF/job/Nsrc_uF__robot_navigation__ubuntu_focal__source/badge/icon?style=flat-square)](http://build.ros.org/view/Nsrc_uF/job/Nsrc_uF__robot_navigation__ubuntu_focal__source/) | [![Build Status](http://build.ros.org/view/Nbin_uF64/job/Nbin_uF64__robot_navigation__ubuntu_focal_amd64__binary/badge/icon?style=flat-square)](http://build.ros.org/view/Nbin_uF64/job/Nbin_uF64__robot_navigation__ubuntu_focal_amd64__binary/)|
+## Images
+
+Image data is managed using [`opencv2`](https://docs.opencv.org/4.x/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56) and can use many formats, including (but not limited to)
+ * bmp
+ * jpg
+ * png
+ * webp
+ * pgm
+
+## Metadata
+Classically, the map metadata has been contained in a yaml file stored alongside the image file, e.g.
+
+    image: testmap.png
+    resolution: 0.1
+    origin: [0.0, 0.0, 0.0]
+    occupied_thresh: 0.65
+    free_thresh: 0.196
+    negate: 0
+
+In addition, `nav_grid_server` provides the ability to also specify this information as ROS parameters, or not at all. The order of precedence is
+ * ROS Parameters (highest precedence)
+ * YAML File
+ * Default values (lowest precedence)
+
+See [the `nav_grid` documentation](../nav_grid/README.md) for further definitions of the metadata.
+
+### Server Params
+The following parameters are able to be specified in either the yaml or ROS parameter server (with defaults in parentheses).
+
+ * `resolution` (`0.05`) - Resolution of the map, meters / pixel
+ * `negate` (`false`) - Whether the image intensity should be negated
+ * `occupied_thresh` (`0.65`) - Pixels with intensity greater than this threshold (scaled 0-1)  are considered occupied.
+ * `free_thresh`  (`0.196`) - Pixels with intensity less than this threshold (scaled 0-1)  are considered free.
+ * `mode` (`"trinary"`) - Default cost interpretation. See [the documentation here](../nav_grid_pub_sub/doc/CostInterpretation.md).
+ * `origin_x`/`origin_y` (`0.0` / `0.0`) Origin offset in meters. The yaw is assumed to be zero.
+    **Note:**: For backwards compatibility, the origin in the yaml file is specified with the name `origin` as an array of doubles, the first to values of which are used for `origin_x` and `origin_y`.
+
+If using a yaml file, `image` must also be specified as the path (absolute or relative) to the image file.
+
+Additionally, you can set the following as ROS Parameters:
+ * `frame_id` (`"map"`) - TF frame of the map
+ * `occupancy_grid_topic` (`"map"`) - Topic on which the `nav_msgs/OccupancyGrid` is published.
+ * `nav_grid_topic` (`"static_map"`) - Topic on which the `nav_2d_msgs/NavGridOfChars` is published.
+
+### Saver Params
+ * `topic` (`"map"`)- Topic to subscribe to
+ * `nav_grid` (`false`) - If true, the topic is expected to be of type `nav_2d_msgs/NavGridOfChars`. Otherwise, `nav_msgs/OccupancyGrid`
+ * `once` (`true`) - If true, only save the first map. Otherwise, save the map repeatedly (useful for mapping).
+ * `trinary_output` (`true`) - If true, uses the trinary cost interpretation. Otherwise, the values are scaled [0, 100]
+ * Filename Parameters
+    * `map_extension` (`"png"`)
+    * `map_prefix` (`"map"`)
+    * `output_directory` (".")
+    * `write_unstamped` (`true`) If true, will write to `output_directory/map_prefix.map_extension`
+    * `write_stamped` (`false`) If true, will write to `output_directory/map_prefix-timestamp.map_extension`
